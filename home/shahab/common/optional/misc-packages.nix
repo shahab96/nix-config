@@ -12,5 +12,7 @@
     kitty
     waybar
     obsidian
+    yq
+    jq
   ];
 }
