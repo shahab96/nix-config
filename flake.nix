@@ -63,11 +63,11 @@
   in {
     nixosConfigurations = mkHostConfigs (readHosts "nixos");
 
-    devShell.x86_64-linux = let
+    devShells.x86_64-linux.default = let
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
     in
       pkgs.mkShell {
-        buildInputs = with pkgs; [nil lua-language-server];
+        buildInputs = with pkgs; [nil lua-language-server kubernetes-helm kubectl];
       };
   };
 }

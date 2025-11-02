@@ -2,7 +2,6 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 {
-  pkgs,
   config,
   lib,
   modulesPath,
@@ -26,6 +25,7 @@
 
     kernelModules = ["kvm-amd"];
     extraModulePackages = [];
+    binfmt.emulatedSystems = ["aarch64-linux"]; # Add other target architectures as needed
   };
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking

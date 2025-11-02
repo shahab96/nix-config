@@ -1,5 +1,23 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
+    uv
+    btop
+    zoxide
+    unzip
+    tmux
+    gcc
+    zig
+    gparted
+    gnupg
+    dig
+    bash
+    kdePackages.dolphin
+    font-awesome
+    tree
+    wl-clipboard-rs
+    brightnessctl
+    age
+    nerd-fonts.jetbrains-mono
     lazygit
     gh
     dbeaver-bin

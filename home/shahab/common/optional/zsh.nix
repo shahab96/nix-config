@@ -1,4 +1,18 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
+  home.packages = with pkgs; [
+    eza
+    ripgrep
+    rm-improved
+    dust
+    xcp
+    nh
+    zoxide
+  ];
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;

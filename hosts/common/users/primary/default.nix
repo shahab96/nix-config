@@ -19,7 +19,7 @@ in {
       home = hostSpec.home;
       isNormalUser = true;
       hashedPassword = "$y$j9T$pvjyL7hL5x2VBarGNTnMl1$mLA2UsWTbfp8Hgp/ug5l8224thi..Mo8.p7ME.tDZ.4";
-      extraGroups = ["networkmanager" "wheel" "input" "libvirtd"];
+      extraGroups = ["networkmanager" "wheel" "input" "libvirtd" "docker"];
 
       # Read all keys in ./keys and add them to authorizedKeys.
       openssh.authorizedKeys.keys =

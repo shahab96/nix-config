@@ -20,7 +20,6 @@
     handle = "shahab96";
     email = {user = "shahab@dogar.dev";};
     userFullName = "Shahab Dogar";
-    domain = "rihla";
     networking.ports.tcp.ssh = 22;
   };
 
@@ -56,7 +55,7 @@
       warn-dirty = false;
       trusted-users = ["@wheel"];
 
-      substituters = ["https://hyprland.cachix.org"];
+      substituters = ["https://hyprland.cachix.org" "https://nix.dogar.dev"];
       trusted-public-keys = [
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       ];

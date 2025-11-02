@@ -7,11 +7,6 @@
 }: {
   imports = lib.flatten [
     (map lib.custom.relativeToRoot ["modules/common" "modules/home-manager"])
-
-    ./kitty.nix
-    ./direnv.nix
-    ./git.nix
-    ./fonts.nix
   ];
 
   inherit hostSpec;
@@ -27,32 +22,6 @@
       VISUAL = "nvim";
       EDITOR = "nvim";
     };
-
-    packages = with pkgs; [
-      nh
-      btop
-      eza
-      ripgrep
-      rm-improved
-      dust
-      zoxide
-      xcp
-      unzip
-      tmux
-      gcc
-      zig
-      gparted
-      gnupg
-      dig
-      bash
-      kdePackages.dolphin
-      font-awesome
-      tree
-      wl-clipboard-rs
-      brightnessctl
-      age
-      nerd-fonts.jetbrains-mono
-    ];
   };
 
   nix = {

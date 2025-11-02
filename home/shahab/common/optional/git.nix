@@ -5,13 +5,14 @@
   ...
 }: {
   programs.git = {
-    package = pkgs.gitAndTools.gitFull;
     enable = true;
-    userName = config.hostSpec.userFullName;
-    userEmail = config.hostSpec.email.user;
     lfs.enable = true;
 
-    extraConfig = {
+    settings = {
+      user = {
+        name = config.hostSpec.userFullName;
+        email = config.hostSpec.email.user;
+      };
       gpg = {format = "ssh";};
       "gpg \"ssh\"" = {
         program = "${lib.getExe' pkgs._1password-gui "op-ssh-sign"}";
