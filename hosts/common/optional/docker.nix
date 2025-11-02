@@ -1,13 +1,13 @@
 {pkgs, ...}: {
   virtualisation = {
-    podman = {
+    docker = {
       enable = true;
-      dockerSocket.enable = true;
-      dockerCompat = true;
-
-      autoPrune = {
-        enable = true;
-        dates = "weekly";
+      daemon = {
+        settings = {
+          features = {
+            containerd-snapshotter = true;
+          };
+        };
       };
     };
 
@@ -17,11 +17,6 @@
       enable = true;
       qemu = {
         swtpm.enable = true;
-
-        ovmf = {
-          enable = true;
-          packages = with pkgs; [OVMFFull.fd];
-        };
       };
     };
 
@@ -34,7 +29,7 @@
     spice
     spice-gtk
     spice-protocol
-    win-virtio
+    virtio-win
     win-spice
   ];
 }
