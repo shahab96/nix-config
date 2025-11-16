@@ -23,7 +23,7 @@
     dbeaver-bin
     cloudflare-warp
     protonmail-desktop
-    protonvpn-gui
+    rpi-imager
     kubectl
     k9s
     postgresql_17
