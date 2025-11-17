@@ -22,6 +22,7 @@
       "ssh"
       "starship"
       "tmux"
+      "uv"
       "zsh"
     ])
   ];
