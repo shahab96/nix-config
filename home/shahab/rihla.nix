@@ -1,4 +1,4 @@
-{lib, ...}: {
+{config, lib, ...}: {
   imports = lib.flatten [
     #
     # ========== Required Configs ==========
@@ -36,5 +36,7 @@
       EDITOR = "nvim";
       NIXOS_OZONE_WL = "1";
     };
+    file.".npmrc".source = config.lib.file.mkOutOfStoreSymlink
+      "${config.home.homeDirectory}/git/nix-config/dotfiles/npm/.npmrc";
   };
 }
