@@ -66,6 +66,7 @@
         "openssh"
         "printing"
         "smart-card"
+        "vpn"
       ])
 
     #
