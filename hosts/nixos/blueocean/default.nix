@@ -45,6 +45,7 @@
       "docker"
       "hyprland"
       "nix-ld"
+      "thunderbird"
       "secure-boot"
       "slack"
       "yubikey"
