@@ -1,0 +1,35 @@
+{pkgs, ...}: {
+  home.packages = with pkgs; [
+    btop
+    zoxide
+    unzip
+    tmux
+    gcc
+    zig
+    gparted
+    gnupg
+    dig
+    bash
+    kdePackages.dolphin
+    font-awesome
+    tree
+    wl-clipboard-rs
+    brightnessctl
+    age
+    nerd-fonts.jetbrains-mono
+    lazygit
+    gh
+    dbeaver-bin
+    cloudflare-warp
+    protonmail-desktop
+    rpi-imager
+    kubectl
+    k9s
+    postgresql_17
+    kitty
+    waybar
+    obsidian
+    yq
+    jq
+  ];
+}

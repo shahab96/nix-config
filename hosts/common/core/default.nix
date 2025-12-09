@@ -16,9 +16,6 @@
   ];
 
   hostSpec = {
-    username = "shahab";
-    handle = "shahab96";
-    email = {user = "shahab@dogar.dev";};
     userFullName = "Shahab Dogar";
     networking.ports.tcp.ssh = 22;
   };
@@ -69,7 +66,7 @@
     enable = true;
     clean.enable = true;
     clean.extraArgs = "--keep-since 10d --keep 10";
-    flake = "/home/user/${config.hostSpec.home}/nix-config";
+    flake = "${config.hostSpec.home}/nix-config";
   };
 
   # ========= Sops =========

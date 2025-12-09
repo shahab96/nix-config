@@ -87,6 +87,9 @@
     secureBoot = false;
     persist = "/persist";
     impermanance = false;
+    username = "shahab";
+    handle = "shahab96";
+    email = {user = "shahab@dogar.dev";};
   };
 
   networking = {
