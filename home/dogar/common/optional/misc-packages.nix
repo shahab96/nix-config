@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    slack
     awscli2
     btop
     zoxide

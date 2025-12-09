@@ -1,6 +1,7 @@
 {
   inputs,
   lib,
+  pkgs,
   config,
   ...
 }: {
@@ -45,7 +46,9 @@
       "hyprland"
       "nix-ld"
       "secure-boot"
+      "slack"
       "yubikey"
+      "zoom"
     ])
 
     #
