@@ -76,6 +76,7 @@
     username = "dogar";
     handle = "shadogar";
     email = {user = "shahab.dogar@blueocean.ai";};
+    useYubikey = lib.mkForce true;
   };
 
   networking = {
