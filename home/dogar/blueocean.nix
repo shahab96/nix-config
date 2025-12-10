@@ -35,6 +35,7 @@
     sessionVariables = {
       EDITOR = "nvim";
       NIXOS_OZONE_WL = "1";
+      GO_PROXY="https://go.dogar.dev";
     };
     file.".npmrc".source = config.lib.file.mkOutOfStoreSymlink
       "${config.home.homeDirectory}/git/nix-config/dotfiles/npm/.npmrc";
