@@ -9,6 +9,9 @@
     lfs.enable = true;
 
     settings = {
+      core = {
+        excludesfile = "~/.gitignore";
+      };
       user = {
         name = config.hostSpec.userFullName;
         email = config.hostSpec.email.user;
