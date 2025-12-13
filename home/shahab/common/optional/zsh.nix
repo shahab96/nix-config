@@ -21,6 +21,7 @@
 
     initContent = ''
       eval "$(zoxide init zsh)"
+      export PATH=/home/shahab/.opencode/bin:$PATH
     '';
 
     shellAliases = {
