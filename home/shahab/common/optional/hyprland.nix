@@ -30,4 +30,6 @@
       mako
     ];
   };
+
+  services.swww.enable = true;
 }
