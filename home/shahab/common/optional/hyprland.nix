@@ -28,6 +28,7 @@
       waybar
       wofi
       mako
+      sassc
     ];
   };
 
