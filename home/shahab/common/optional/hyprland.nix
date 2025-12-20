@@ -29,6 +29,7 @@
       wofi
       mako
       sassc
+      nwg-look
     ];
   };
 
