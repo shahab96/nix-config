@@ -39,6 +39,7 @@ in {
   #
   hostSpec = {
     hostName = hostName;
+    username = "shahab";
   };
 
   networking = {
