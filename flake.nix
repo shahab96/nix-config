@@ -9,9 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Hyprland cachix flake
-    hyprland.url = "github:hyprwm/Hyprland";
-
     # NixOS community managed hardware specific features/fixes
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
