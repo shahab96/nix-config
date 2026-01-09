@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     btop
+    discord
     zoxide
     unzip
     tmux
