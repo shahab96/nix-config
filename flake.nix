@@ -32,7 +32,7 @@
 
     # Secrets
     nix-secrets = {
-      url = "git+ssh://git@git.dogar.dev/shahab/nix-secrets?shallow=1&ref=main";
+      url = "git+ssh://git@git.dogar.dev:2222/shahab/nix-secrets?shallow=1&ref=main";
       flake = false;
     };
   };
