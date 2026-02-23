@@ -50,6 +50,7 @@
       "hoppscotch"
       "hyprland"
       "nix-ld"
+      "obs"
       "secure-boot"
       "yubikey"
     ])
