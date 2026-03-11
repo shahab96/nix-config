@@ -32,5 +32,7 @@
     obsidian
     yq
     jq
+    opencode
+    postman
   ];
 }
