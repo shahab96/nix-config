@@ -33,5 +33,6 @@
     yq
     jq
     postman
+    ollama
   ];
 }
