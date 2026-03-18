@@ -21,13 +21,6 @@
     };
 
     packages = with pkgs; [
-      hyprshot
-      hyprlock
-      hypridle
-      hyprpolkitagent
-      waybar
-      wofi
-      mako
       sassc
       nwg-look
     ];
