@@ -33,6 +33,7 @@
     yq
     jq
     opencode
+    ollama
     postman
   ];
 }
