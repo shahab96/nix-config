@@ -1,44 +1,6 @@
 local cmp = require "cmp"
 
 local plugins = {
-  { "nvim-neotest/nvim-nio" },
-  {
-    "mfussenegger/nvim-dap",
-  },
-  {
-    "mfussenegger/nvim-dap-python",
-    ft = "python",
-    dependencies = {
-      "mfussenegger/nvim-dap",
-      "rcarriga/nvim-dap-ui",
-      "nvim-neotest/nvim-nio",
-    },
-    config = function(_, _)
-      local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
-      require("dap-python").setup(path)
-    end,
-  },
-  {
-    "rcarriga/nvim-dap-ui",
-    dependencies = {
-      "mfussenegger/nvim-dap",
-    },
-    config = function()
-      local dap = require "dap"
-      local dapui = require "dapui"
-
-      dapui.setup()
-      dap.listeners.after.event_initialized["dapui_config"] = function()
-        dapui.open()
-      end
-      dap.listeners.before.event_terminated["dapui_config"] = function()
-        dapui.close()
-      end
-      dap.listeners.before.event_exited["dapui_config"] = function()
-        dapui.close()
-      end
-    end,
-  },
   { "folke/neodev.nvim", opts = {} },
   {
     "nvim-telescope/telescope.nvim",
@@ -90,28 +52,6 @@ local plugins = {
     },
   },
   {
-    "kristijanhusak/vim-dadbod-ui",
-    dependencies = {
-      {
-        "tpope/vim-dadbod",
-        lazy = false,
-      },
-      {
-        "kristijanhusak/vim-dadbod-completion",
-        ft = { "sql", "mysql", "plsql" },
-      },
-    },
-    cmd = {
-      "DBUI",
-      "DBUIToggle",
-      "DBUIAddConnection",
-      "DBUIFindBuffer",
-    },
-    init = function()
-      vim.g.db_ui_use_nerd_fonts = 1
-    end,
-  },
-  {
     "folke/trouble.nvim",
     opts = {},
     cmd = "Trouble",
@@ -130,7 +70,6 @@ local plugins = {
         "mypy",
         "ruff",
         "black",
-        "debugpy",
         "lua-language-server",
         "nil",
         "phpactor",
@@ -158,20 +97,10 @@ local plugins = {
   {
     "simrat39/rust-tools.nvim",
     ft = "rust",
-    dependencies = { "neovim/nvim-lspconfig", "nvim-lua/plenary.nvim", "mfussenegger/nvim-dap" },
+    dependencies = { "neovim/nvim-lspconfig", "nvim-lua/plenary.nvim" },
     opts = function()
       local lspconfig = require "plugins.configs.lspconfig"
-      -- local extension_path = vim.env.HOME .. "/.local/share/nvim/mason/packages/codelldb/extension/"
-      -- local codelldb_path = extension_path .. 'adapter/codelldb'
-      -- local liblldb_path = extension_path .. 'lldb/lib/liblldb.so'
       return {
-        dap = {
-          adapter = {
-            type = "executable",
-            command = "lldb",
-            name = "rt_lldb",
-          },
-        },
         server = {
           tools = {
             hover_actions = {

@@ -25,54 +25,11 @@ M["rust-tools"] = {
   },
 }
 
-M.dap = {
-  n = {
-    ["<leader>dt"] = {
-      "<cmd> DapToggleBreakpoint <CR>",
-      "Toggle breakpoint",
-    },
-    ["<leader>dr"] = {
-      "<cmd> DapContinue <CR>",
-      "Continue Debugging",
-    },
-    ["<leader>dc"] = {
-      "<cmd> DapTerminate <CR>",
-      "Close Debugger",
-    },
-  },
-}
-
-M.dap_python = {
-  plugin = true,
-
-  n = {
-    ["<leader>dpr"] = {
-      function()
-        require("dap-python").test_method()
-      end,
-      "Debug test method",
-    },
-  },
-}
-
 M.lazygit = {
   n = {
     ["<leader>gg"] = {
       "<cmd> LazyGit <CR>",
       "LazyGit",
-    },
-  },
-}
-
-M.dadbodui = {
-  n = {
-    ["<leader>db"] = {
-      "<cmd> DBUIToggle <CR>",
-      "Toggle DB UI",
-    },
-    ["<leader>dn"] = {
-      "<cmd> DBUIAddConnection <CR>",
-      "Add new database connection",
     },
   },
 }
