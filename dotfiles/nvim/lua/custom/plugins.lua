@@ -13,7 +13,7 @@ local plugins = {
       "rcarriga/nvim-dap-ui",
       "nvim-neotest/nvim-nio",
     },
-    config = function (_, opts)
+    config = function (_, _)
       local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
       require("dap-python").setup(path)
     end
@@ -52,13 +52,6 @@ local plugins = {
   },
   {
     "ThePrimeagen/git-worktree.nvim",
-  },
-  {
-    "jose-elias-alvarez/null-ls.nvim",
-    ft = { "python" },
-    config = function ()
-      require "custom.configs.null-ls"
-    end,
   },
   {
     "folke/noice.nvim",

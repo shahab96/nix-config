@@ -1,48 +1,50 @@
 local config = require("plugins.configs.lspconfig")
 local on_attach = config.on_attach
 local capabilities = config.capabilities
-local lspconfig = require("lspconfig")
 
-local function organize_imports()
-  local params = {
-    command = "_typescript.organizeImports",
-    arguments = { vim.api.nvim_buf_get_name(0) },
-  }
-  vim.lsp.buf.execute_command(params)
+local custom_on_attach = function(client, bufnr)
+  on_attach(client, bufnr)
+
+  if client.name == "ts_ls" then
+    vim.api.nvim_buf_create_user_command(bufnr, "OrganizeImports", function()
+      local params = {
+        command = "_typescript.organizeImports",
+        arguments = { vim.api.nvim_buf_get_name(0) },
+      }
+      vim.lsp.buf.execute_command(params)
+    end, { desc = "Organize Imports" })
+  end
 end
 
-lspconfig.ts_ls.setup {
-  on_attach = on_attach,
+vim.lsp.config("ts_ls", {
+  on_attach = custom_on_attach,
   capabilities = capabilities,
   init_options = {
     preferences = {
       disablesuggestions = true,
     }
   },
-  commands = {
-    OrganizeImports = {
-      organize_imports,
-      description = "Organize Imports",
-    },
-  }
-}
+})
+vim.lsp.enable("ts_ls")
 
-lspconfig.terraformls.setup {
+vim.lsp.config("terraformls", {
   on_attach = on_attach,
   capabilities = capabilities,
-}
+})
+vim.lsp.enable("terraformls")
 
-lspconfig.tflint.setup {
+vim.lsp.config("tflint", {
   on_attach = on_attach,
   capabilities = capabilities,
-}
+})
+vim.lsp.enable("tflint")
 
-lspconfig.gopls.setup {
+vim.lsp.config("gopls", {
   on_attach = on_attach,
   capabilities = capabilities,
   cmd = { "gopls" },
   filetypes = { "go", "gomod", "gowork", "gotempl" },
-  root_dir = lspconfig.util.root_pattern("go.mod", "go.work"),
+  root_markers = { "go.mod", "go.work" },
   settings = {
     gopls = {
       completeUnimported = true,
@@ -52,20 +54,19 @@ lspconfig.gopls.setup {
       },
     },
   },
-}
+})
+vim.lsp.enable("gopls")
 
-lspconfig.pyright.setup {
+vim.lsp.config("pyright", {
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = { "python" },
-}
+})
+vim.lsp.enable("pyright")
 
-lspconfig.gleam.setup({})
-
-lspconfig.nil_ls.setup {
+vim.lsp.config("nil_ls", {
   on_attach = on_attach,
   capabilities = capabilities,
-  autostart = true,
   cmd = { "nil" },
   filetypes = { "nix" },
   settings = {
@@ -76,4 +77,5 @@ lspconfig.nil_ls.setup {
       },
     },
   },
-}
+})
+vim.lsp.enable("nil_ls")

@@ -27,12 +27,6 @@ M['rust-tools'] = {
 
 M.dap = {
   n = {
-    ["<leader>dl"] = {
-      function ()
-        require("dap")
-      end,
-      "Load DAP",
-    },
     ["<leader>dt"] = {
       "<cmd> DapToggleBreakpoint <CR>",
       "Toggle breakpoint",
@@ -57,25 +51,6 @@ M.dap_python = {
         require("dap-python").test_method()
       end,
       "Debug test method",
-    },
-  }
-}
-
-M.dap_go = {
-  plugin = true,
-
-  n = {
-    ["<leader>gdt"] = {
-      function ()
-        require("dap-go").debug_test()
-      end,
-      "Debug go test",
-    },
-    ["<leader>gdl"] = {
-      function ()
-        require("dap-go").debug_last()
-      end,
-      "Toggle breakpoint",
     },
   }
 }
@@ -138,19 +113,6 @@ M.worktree = {
         telescope.extensions.git_worktree.create_git_worktree()
       end,
       "New Git Worktree",
-    },
-  },
-}
-
-M.neorg = {
-  n = {
-    ["<leader>ni"] = {
-      "<cmd> Neorg index <CR>",
-      "Neorg index",
-    },
-    ["<leader>nr"] = {
-      "<cmd> Neorg return <CR>",
-      "Return from index",
     },
   },
 }

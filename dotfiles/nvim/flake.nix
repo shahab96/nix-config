@@ -27,6 +27,7 @@
           stylua
           ripgrep
           fd
+          nil
 
           nodejs_24
           python313
