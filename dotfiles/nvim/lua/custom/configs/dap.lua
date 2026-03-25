@@ -1,4 +1,4 @@
-local dap = require("dap")
+local dap = require "dap"
 
 dap.adapters["pwa-node"] = {
   type = "server",

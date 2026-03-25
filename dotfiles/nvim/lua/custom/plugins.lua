@@ -13,19 +13,19 @@ local plugins = {
       "rcarriga/nvim-dap-ui",
       "nvim-neotest/nvim-nio",
     },
-    config = function (_, _)
+    config = function(_, _)
       local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
       require("dap-python").setup(path)
-    end
+    end,
   },
   {
     "rcarriga/nvim-dap-ui",
     dependencies = {
       "mfussenegger/nvim-dap",
     },
-    config = function ()
-      local dap = require("dap")
-      local dapui = require("dapui")
+    config = function()
+      local dap = require "dap"
+      local dapui = require "dapui"
 
       dapui.setup()
       dap.listeners.after.event_initialized["dapui_config"] = function()
@@ -42,8 +42,8 @@ local plugins = {
   { "folke/neodev.nvim", opts = {} },
   {
     "nvim-telescope/telescope.nvim",
-    config = function ()
-      require("telescope").load_extension("git_worktree")
+    config = function()
+      require("telescope").load_extension "git_worktree"
     end,
   },
   {
@@ -77,7 +77,7 @@ local plugins = {
         enabled = false,
       },
     },
-    config = function (_, opts)
+    config = function(_, opts)
       require("noice").setup(opts)
     end,
     dependencies = {
@@ -139,9 +139,9 @@ local plugins = {
   },
   {
     "neovim/nvim-lspconfig",
-    config = function ()
-      require("plugins.configs.lspconfig")
-      require("custom.configs.lspconfig")
+    config = function()
+      require "plugins.configs.lspconfig"
+      require "custom.configs.lspconfig"
     end,
   },
   {
@@ -151,7 +151,7 @@ local plugins = {
   {
     "rust-lang/rust.vim",
     ft = "rust",
-    init =function ()
+    init = function()
       vim.g.rustfmt_autosave = 1
     end,
   },
@@ -159,8 +159,8 @@ local plugins = {
     "simrat39/rust-tools.nvim",
     ft = "rust",
     dependencies = { "neovim/nvim-lspconfig", "nvim-lua/plenary.nvim", "mfussenegger/nvim-dap" },
-    opts = function ()
-      local lspconfig = require("plugins.configs.lspconfig")
+    opts = function()
+      local lspconfig = require "plugins.configs.lspconfig"
       -- local extension_path = vim.env.HOME .. "/.local/share/nvim/mason/packages/codelldb/extension/"
       -- local codelldb_path = extension_path .. 'adapter/codelldb'
       -- local liblldb_path = extension_path .. 'lldb/lib/liblldb.so'
@@ -193,7 +193,7 @@ local plugins = {
   },
   {
     "crnvl96/lazydocker.nvim",
-    opts = {},  -- automatically calls `require("lazydocker").setup()`
+    opts = {}, -- automatically calls `require("lazydocker").setup()`
     dependencies = {
       "MunifTanjim/nui.nvim",
     },
@@ -202,13 +202,13 @@ local plugins = {
     "saecki/crates.nvim",
     event = { "BufRead Cargo.toml" },
     config = function(_, opts)
-      local crates = require("crates")
+      local crates = require "crates"
       crates.setup(opts)
-      cmp.setup.buffer({
-        sources = { { name = "crates" }}
-      })
+      cmp.setup.buffer {
+        sources = { { name = "crates" } },
+      }
       crates.show()
-      require("core.utils").load_mappings("crates")
+      require("core.utils").load_mappings "crates"
     end,
   },
   {
@@ -220,22 +220,22 @@ local plugins = {
         behavior = cmp.ConfirmBehavior.Insert,
         select = false,
       }
-      table.insert(M.sources, {name = "crates"})
+      table.insert(M.sources, { name = "crates" })
       return M
     end,
   },
   {
     "mhartington/formatter.nvim",
     event = "VeryLazy",
-    opts = function ()
-      return require("custom.configs.formatter")
-    end
+    opts = function()
+      return require "custom.configs.formatter"
+    end,
   },
   {
     "laytan/cloak.nvim",
     lazy = false,
-    config = function ()
-      require("cloak").setup({
+    config = function()
+      require("cloak").setup {
         enabled = true,
         cloak_character = "*",
         -- The applied highlight group (colors) on the cloaking, see `:h highlight`.
@@ -245,30 +245,28 @@ local plugins = {
             -- Match any file starting with ".env".
             -- This can be a table to match multiple file patterns.
             file_pattern = {
-                ".env*",
-                "wrangler.toml",
-                ".dev.vars",
+              ".env*",
+              "wrangler.toml",
+              ".dev.vars",
             },
             -- Match an equals sign and any character after it.
             -- This can also be a table of patterns to cloak,
             -- example: cloak_pattern = { ":.+", "-.+" } for yaml files.
-            cloak_pattern = "=.+"
+            cloak_pattern = "=.+",
           },
         },
-      })
+      }
     end,
   },
   {
     "yetone/avante.nvim",
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     -- ⚠️ must add this setting! ! !
-    build = vim.fn.has("win32") ~= 0
-        and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
-        or "make",
+    build = vim.fn.has "win32" ~= 0 and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
+      or "make",
     event = "VeryLazy",
     version = false, -- Never set this value to "*"! Never!
     ---@module 'avante'
-    ---@type avante.Config
     opts = {
       -- add any opts here
       -- this file can contain specific instructions for your project
@@ -280,10 +278,10 @@ local plugins = {
           endpoint = "https://api.anthropic.com",
           model = "claude-sonnet-4-20250514",
           timeout = 30000, -- Timeout in milliseconds
-            extra_request_body = {
-              temperature = 0.75,
-              max_tokens = 20480,
-            },
+          extra_request_body = {
+            temperature = 0.75,
+            max_tokens = 20480,
+          },
         },
         moonshot = {
           endpoint = "https://api.moonshot.ai/v1",
@@ -327,7 +325,7 @@ local plugins = {
       },
       {
         -- Make sure to set this up properly if you have lazy=true
-        'MeanderingProgrammer/render-markdown.nvim',
+        "MeanderingProgrammer/render-markdown.nvim",
         opts = {
           file_types = { "markdown", "Avante" },
         },

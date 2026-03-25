@@ -8,16 +8,16 @@ M.disabled = {
   },
 }
 
-M['rust-tools'] = {
+M["rust-tools"] = {
   n = {
     ["<C-space>"] = {
-      function ()
+      function()
         require("rust-tools.hover_actions").hover_actions()
       end,
       "Rust hover actions",
     },
     ["<leader>a"] = {
-      function ()
+      function()
         require("rust-tools.code_action_group").code_action_group()
       end,
       "Rust code action group",
@@ -39,7 +39,7 @@ M.dap = {
       "<cmd> DapTerminate <CR>",
       "Close Debugger",
     },
-  }
+  },
 }
 
 M.dap_python = {
@@ -47,12 +47,12 @@ M.dap_python = {
 
   n = {
     ["<leader>dpr"] = {
-      function ()
+      function()
         require("dap-python").test_method()
       end,
       "Debug test method",
     },
-  }
+  },
 }
 
 M.lazygit = {
@@ -83,7 +83,7 @@ M.noice = {
       "<cmd> Noice last <CR>",
       "Show last message",
     },
-    ["<leader>nt"] ={
+    ["<leader>nt"] = {
       "<cmd> Noice telescope <CR>",
       "Noice telescope mode",
     },
@@ -101,15 +101,15 @@ M.noice = {
 M.worktree = {
   n = {
     ["<leader>gwv"] = {
-      function ()
-        local telescope = require("telescope")
+      function()
+        local telescope = require "telescope"
         telescope.extensions.git_worktree.git_worktrees()
       end,
       "View Git Worktrees",
     },
     ["<leader>gwn"] = {
-      function ()
-        local telescope = require("telescope")
+      function()
+        local telescope = require "telescope"
         telescope.extensions.git_worktree.create_git_worktree()
       end,
       "New Git Worktree",
@@ -136,7 +136,7 @@ M.trouble = {
       "<cmd> Trouble diagnostics toggle <CR>",
       "Diagnostics (Trouble)",
     },
-  }
+  },
 }
 
 M.tabufline = {

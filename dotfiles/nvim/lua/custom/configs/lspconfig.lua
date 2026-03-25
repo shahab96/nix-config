@@ -1,4 +1,4 @@
-local config = require("plugins.configs.lspconfig")
+local config = require "plugins.configs.lspconfig"
 local on_attach = config.on_attach
 local capabilities = config.capabilities
 
@@ -11,7 +11,7 @@ local custom_on_attach = function(client, bufnr)
         command = "_typescript.organizeImports",
         arguments = { vim.api.nvim_buf_get_name(0) },
       }
-      vim.lsp.buf.execute_command(params)
+      client:request("workspace/executeCommand", params)
     end, { desc = "Organize Imports" })
   end
 end
@@ -22,22 +22,22 @@ vim.lsp.config("ts_ls", {
   init_options = {
     preferences = {
       disablesuggestions = true,
-    }
+    },
   },
 })
-vim.lsp.enable("ts_ls")
+vim.lsp.enable "ts_ls"
 
 vim.lsp.config("terraformls", {
   on_attach = on_attach,
   capabilities = capabilities,
 })
-vim.lsp.enable("terraformls")
+vim.lsp.enable "terraformls"
 
 vim.lsp.config("tflint", {
   on_attach = on_attach,
   capabilities = capabilities,
 })
-vim.lsp.enable("tflint")
+vim.lsp.enable "tflint"
 
 vim.lsp.config("gopls", {
   on_attach = on_attach,
@@ -55,14 +55,14 @@ vim.lsp.config("gopls", {
     },
   },
 })
-vim.lsp.enable("gopls")
+vim.lsp.enable "gopls"
 
 vim.lsp.config("pyright", {
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = { "python" },
 })
-vim.lsp.enable("pyright")
+vim.lsp.enable "pyright"
 
 vim.lsp.config("nil_ls", {
   on_attach = on_attach,
@@ -70,7 +70,7 @@ vim.lsp.config("nil_ls", {
   cmd = { "nil" },
   filetypes = { "nix" },
   settings = {
-    ['nil'] = {
+    ["nil"] = {
       testSetting = 42,
       formatting = {
         command = { "nixfmt" },
@@ -78,4 +78,4 @@ vim.lsp.config("nil_ls", {
     },
   },
 })
-vim.lsp.enable("nil_ls")
+vim.lsp.enable "nil_ls"
