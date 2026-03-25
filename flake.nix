@@ -12,6 +12,9 @@
     # NixOS community managed hardware specific features/fixes
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
+    # Hyprland
+    hyprland.url = "github:hyprwm/Hyprland";
+
     # Secure boot
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.2";
