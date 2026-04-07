@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   services = {
     # Enable sound with pipewire.
     pulseaudio.enable = false;
@@ -12,6 +13,5 @@
   };
   security.rtkit.enable = true;
 
-  environment.systemPackages =
-    builtins.attrValues {inherit (pkgs) pavucontrol;};
+  environment.systemPackages = builtins.attrValues { inherit (pkgs) pavucontrol; };
 }

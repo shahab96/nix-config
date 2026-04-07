@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # yubikey login / sudo
   security.pam = {
     u2f = {
@@ -11,5 +12,5 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [yubikey-manager];
+  environment.systemPackages = with pkgs; [ yubikey-manager ];
 }

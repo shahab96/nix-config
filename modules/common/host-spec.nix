@@ -3,7 +3,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   options.hostSpec = {
     username = lib.mkOption {
       type = lib.types.str;
@@ -18,7 +19,7 @@
       description = "The email of the user";
     };
     networking = lib.mkOption {
-      default = {};
+      default = { };
       type = lib.types.attrsOf lib.types.anything;
       description = "An attribute set of networking information";
     };

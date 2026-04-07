@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   virtualisation = {
     docker = {
       enable = true;
@@ -11,7 +12,11 @@
       };
     };
 
-    containers = {registries = {search = ["docker.io"];};};
+    containers = {
+      registries = {
+        search = [ "docker.io" ];
+      };
+    };
 
     libvirtd = {
       enable = true;

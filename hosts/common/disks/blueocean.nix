@@ -6,7 +6,8 @@
   swapSize,
   label,
   ...
-}: {
+}:
+{
   disko = {
     devices = {
       disk = {
@@ -40,7 +41,10 @@
                   passwordFile = "/tmp/secret.key";
                   settings = {
                     allowDiscards = true;
-                    crypttabExtraOpts = ["fido2-device=auto" "token-timeout=10"];
+                    crypttabExtraOpts = [
+                      "fido2-device=auto"
+                      "token-timeout=10"
+                    ];
                   };
                   content = {
                     type = "lvm_pv";
@@ -66,15 +70,22 @@
                   passwordFile = "/tmp/secret.key";
                   settings = {
                     allowDiscards = true;
-                    crypttabExtraOpts = ["fido2-device=auto" "token-timeout=10"];
+                    crypttabExtraOpts = [
+                      "fido2-device=auto"
+                      "token-timeout=10"
+                    ];
                   };
                   content = {
                     type = "btrfs";
-                    extraArgs = ["-L nix -f"];
+                    extraArgs = [ "-L nix -f" ];
                     subvolumes = {
                       "@nix" = {
                         mountpoint = "/nix";
-                        mountOptions = ["subvol=nix" "compress=zstd" "noatime"];
+                        mountOptions = [
+                          "subvol=nix"
+                          "compress=zstd"
+                          "noatime"
+                        ];
                       };
                     };
                   };
@@ -99,11 +110,19 @@
               size = "100%";
               content = {
                 type = "btrfs";
-                extraArgs = ["-L" label "-f"];
+                extraArgs = [
+                  "-L"
+                  label
+                  "-f"
+                ];
                 subvolumes = {
                   "@root" = {
                     mountpoint = "/";
-                    mountOptions = ["subvol=root" "compress=zstd" "noatime"];
+                    mountOptions = [
+                      "subvol=root"
+                      "compress=zstd"
+                      "noatime"
+                    ];
                   };
                 };
               };

@@ -1,3 +1,4 @@
-{pkgs, ...}: {
-  environment.systemPackages = with pkgs; [sbctl];
+{ pkgs, ... }:
+{
+  environment.systemPackages = with pkgs; [ sbctl ];
 }

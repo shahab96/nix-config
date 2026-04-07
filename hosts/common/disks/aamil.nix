@@ -27,7 +27,10 @@
                 passwordFile = "/tmp/secret.key";
                 settings = {
                   allowDiscards = true;
-                  crypttabExtraOpts = ["fido2-device=auto" "token-timeout=10"];
+                  crypttabExtraOpts = [
+                    "fido2-device=auto"
+                    "token-timeout=10"
+                  ];
                 };
                 content = {
                   type = "filesystem";

@@ -1,3 +1,4 @@
-{...}: {
-  imports = [./yubikey-touch-detector.nix];
+{ ... }:
+{
+  imports = [ ./yubikey-touch-detector.nix ];
 }

@@ -1,3 +1,4 @@
-{pkgs, ...}: {
-  environment.systemPackages = with pkgs; [claude-code];
+{ pkgs, ... }:
+{
+  environment.systemPackages = with pkgs; [ claude-code ];
 }

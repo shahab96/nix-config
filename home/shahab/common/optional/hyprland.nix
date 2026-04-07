@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   home = {
     file = {
       "${config.xdg.configHome}/hypr/hyprland.conf".source =
@@ -26,5 +27,5 @@
     ];
   };
 
-  services.swww.enable = true;
+  services.awww.enable = true;
 }

@@ -6,8 +6,9 @@
   lib,
   modulesPath,
   ...
-}: {
-  imports = [(modulesPath + "/installer/scan/not-detected.nix")];
+}:
+{
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot = {
     initrd = {
@@ -20,12 +21,12 @@
         "usb_storage"
         "sd_mod"
       ];
-      kernelModules = [];
+      kernelModules = [ ];
     };
 
-    kernelModules = ["kvm-amd"];
-    extraModulePackages = [];
-    binfmt.emulatedSystems = ["aarch64-linux"]; # Add other target architectures as needed
+    kernelModules = [ "kvm-amd" ];
+    extraModulePackages = [ ];
+    binfmt.emulatedSystems = [ "aarch64-linux" ]; # Add other target architectures as needed
   };
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -38,8 +39,7 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware = {
-    cpu.amd.updateMicrocode =
-      lib.mkDefault config.hardware.enableRedistributableFirmware;
+    cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     graphics = {
       enable = true;
     };

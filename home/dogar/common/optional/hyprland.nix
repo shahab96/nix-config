@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   home = {
     file = {
       "${config.xdg.configHome}/hypr/hyprland.conf".source =

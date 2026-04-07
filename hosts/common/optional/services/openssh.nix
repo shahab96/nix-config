@@ -1,9 +1,11 @@
-{config, ...}: let
+{ config, ... }:
+let
   sshPort = config.hostSpec.networking.ports.tcp.ssh;
-in {
+in
+{
   services.openssh = {
     enable = true;
-    ports = [sshPort];
+    ports = [ sshPort ];
 
     settings = {
       PermitRootLogin = "no";
@@ -14,5 +16,5 @@ in {
     openFirewall = true;
   };
 
-  networking.firewall.allowedTCPPorts = [sshPort];
+  networking.firewall.allowedTCPPorts = [ sshPort ];
 }

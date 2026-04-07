@@ -3,9 +3,11 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   hostName = "aamil-1";
-in {
+in
+{
   imports = lib.flatten [
     #
     # ========= Hardware =========
@@ -21,17 +23,16 @@ in {
     #
     # ========= Required Configs =========
     #
-    (map lib.custom.relativeToRoot ["hosts/common/core"])
+    (map lib.custom.relativeToRoot [ "hosts/common/core" ])
 
     #
     # ========= Services =========
     #
-    (map
-      (s: lib.custom.relativeToRoot "hosts/common/optional/services/${s}.nix") [
-        "k3s"
-        "openiscsi"
-        "openssh"
-      ])
+    (map (s: lib.custom.relativeToRoot "hosts/common/optional/services/${s}.nix") [
+      "k3s"
+      "openiscsi"
+      "openssh"
+    ])
   ];
 
   #
@@ -52,7 +53,10 @@ in {
   nix = {
     settings = {
       require-sigs = false;
-      experimental-features = ["nix-command" "flakes"];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
     };
   };
 
@@ -74,11 +78,11 @@ in {
 
   security.sudo.extraRules = [
     {
-      users = ["shahab"];
+      users = [ "shahab" ];
       commands = [
         {
           command = "ALL";
-          options = ["NOPASSWD"];
+          options = [ "NOPASSWD" ];
         }
       ];
     }

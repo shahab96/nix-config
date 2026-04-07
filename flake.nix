@@ -40,34 +40,43 @@
     };
   };
 
-  outputs = {nixpkgs, ...} @ inputs: let
-    inherit (nixpkgs) lib;
-    mkHost = host: {
-      ${host} = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs;
+  outputs =
+    { nixpkgs, ... }@inputs:
+    let
+      inherit (nixpkgs) lib;
+      mkHost = host: {
+        ${host} = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs;
 
-          # Extend lib with lib.custom
-          lib = nixpkgs.lib.extend (self: super: {
-            custom = import ./lib {inherit (nixpkgs) lib;};
-          });
+            # Extend lib with lib.custom
+            lib = nixpkgs.lib.extend (
+              self: super: {
+                custom = import ./lib { inherit (nixpkgs) lib; };
+              }
+            );
+          };
+
+          modules = [ ./hosts/nixos/${host} ];
         };
-
-        modules = [./hosts/nixos/${host}];
       };
-    };
-    mkHostConfigs = hosts:
-      lib.foldl (acc: set: acc // set) {}
-      (lib.map (host: mkHost host) hosts);
-    readHosts = folder: lib.attrNames (builtins.readDir ./hosts/${folder});
-  in {
-    nixosConfigurations = mkHostConfigs (readHosts "nixos");
-
-    devShells.x86_64-linux.default = let
-      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      mkHostConfigs = hosts: lib.foldl (acc: set: acc // set) { } (lib.map (host: mkHost host) hosts);
+      readHosts = folder: lib.attrNames (builtins.readDir ./hosts/${folder});
     in
-      pkgs.mkShell {
-        buildInputs = with pkgs; [nil lua-language-server kubernetes-helm kubectl];
-      };
-  };
+    {
+      nixosConfigurations = mkHostConfigs (readHosts "nixos");
+
+      devShells.x86_64-linux.default =
+        let
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        in
+        pkgs.mkShell {
+          buildInputs = with pkgs; [
+            nil
+            lua-language-server
+            kubernetes-helm
+            kubectl
+          ];
+        };
+    };
 }

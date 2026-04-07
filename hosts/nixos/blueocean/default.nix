@@ -3,7 +3,8 @@
   lib,
   config,
   ...
-}: {
+}:
+{
   imports = lib.flatten [
     #
     # ========= Hardware =========
@@ -32,7 +33,7 @@
     #
     # ========= Required Configs =========
     #
-    (map lib.custom.relativeToRoot ["hosts/common/core"])
+    (map lib.custom.relativeToRoot [ "hosts/common/core" ])
 
     #
     # ========= Optional Configs =========
@@ -54,17 +55,16 @@
     #
     # ========= Optional Services =========
     #
-    (map
-      (s: lib.custom.relativeToRoot "hosts/common/optional/services/${s}.nix") [
-        "audio"
-        "bluetooth"
-        "firmware"
-        "greetd"
-        "openssh"
-        "printing"
-        "smart-card"
-        "vpn"
-      ])
+    (map (s: lib.custom.relativeToRoot "hosts/common/optional/services/${s}.nix") [
+      "audio"
+      "bluetooth"
+      "firmware"
+      "greetd"
+      "openssh"
+      "printing"
+      "smart-card"
+      "vpn"
+    ])
   ];
 
   #
@@ -74,7 +74,9 @@
     hostName = "blueocean";
     username = "dogar";
     handle = "shadogar";
-    email = {user = "shahab.dogar@blueocean.ai";};
+    email = {
+      user = "shahab.dogar@blueocean.ai";
+    };
     useYubikey = lib.mkForce true;
   };
 

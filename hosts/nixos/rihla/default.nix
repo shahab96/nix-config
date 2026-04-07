@@ -4,7 +4,8 @@
   lib,
   config,
   ...
-}: {
+}:
+{
   imports = lib.flatten [
     #
     # ========= Hardware =========
@@ -37,7 +38,7 @@
     #
     # ========= Required Configs =========
     #
-    (map lib.custom.relativeToRoot ["hosts/common/core"])
+    (map lib.custom.relativeToRoot [ "hosts/common/core" ])
 
     #
     # ========= Optional Configs =========
@@ -58,17 +59,16 @@
     #
     # ========= Optional Services =========
     #
-    (map
-      (s: lib.custom.relativeToRoot "hosts/common/optional/services/${s}.nix") [
-        "audio"
-        "bluetooth"
-        "firmware"
-        "greetd"
-        "openssh"
-        "printing"
-        "smart-card"
-        "vpn"
-      ])
+    (map (s: lib.custom.relativeToRoot "hosts/common/optional/services/${s}.nix") [
+      "audio"
+      "bluetooth"
+      "firmware"
+      "greetd"
+      "openssh"
+      "printing"
+      "smart-card"
+      "vpn"
+    ])
 
     #
     # ========= Specialisations ========
@@ -90,7 +90,9 @@
     impermanance = false;
     username = "shahab";
     handle = "shahab96";
-    email = {user = "shahab@dogar.dev";};
+    email = {
+      user = "shahab@dogar.dev";
+    };
   };
 
   networking = {
@@ -108,9 +110,8 @@
       efi.canTouchEfiVariables = true;
     };
 
-    initrd.postResumeCommands =
-      lib.mkIf config.hostSpec.impermanance
-      (lib.mkAfter ''
+    initrd.postResumeCommands = lib.mkIf config.hostSpec.impermanance (
+      lib.mkAfter ''
         mkdir /btrfs_tmp
         mount /dev/crypt_vg/root /btrfs_tmp
         if [[ -e /btrfs_tmp/root ]]; then
@@ -133,7 +134,8 @@
 
         btrfs subvolume create /btrfs_tmp/root
         umount /btrfs_tmp
-      '');
+      ''
+    );
 
     lanzaboote = {
       enable = config.hostSpec.secureBoot;
@@ -143,7 +145,10 @@
 
   security.rtkit.enable = true;
 
-  environment.systemPackages = with pkgs; [pciutils bc];
+  environment.systemPackages = with pkgs; [
+    pciutils
+    bc
+  ];
 
   system.stateVersion = "25.05";
 }

@@ -10,34 +10,39 @@
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    flake-utils,
-    fenix,
-  }:
-    flake-utils.lib.eachDefaultSystem (system: let
-      pkgs = nixpkgs.legacyPackages.${system};
-      fenixLib = fenix.packages.${system};
-      rustToolchain = fenixLib.stable.toolchain;
-    in {
-      devShells.default = pkgs.mkShell {
-        buildInputs = with pkgs; [
-          lua-language-server
-          stylua
-          ripgrep
-          fd
-          nil
+  outputs =
+    {
+      self,
+      nixpkgs,
+      flake-utils,
+      fenix,
+    }:
+    flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+        fenixLib = fenix.packages.${system};
+        rustToolchain = fenixLib.stable.toolchain;
+      in
+      {
+        devShells.default = pkgs.mkShell {
+          buildInputs = with pkgs; [
+            lua-language-server
+            stylua
+            ripgrep
+            fd
+            nil
 
-          nodejs_24
-          python313
-          rustToolchain
-        ];
+            nodejs_24
+            python313
+            rustToolchain
+          ];
 
-        shellHook = ''
-          echo "Neovim development environment"
-          echo "nvim is configured with your local config"
-        '';
-      };
-    });
+          shellHook = ''
+            echo "Neovim development environment"
+            echo "nvim is configured with your local config"
+          '';
+        };
+      }
+    );
 }

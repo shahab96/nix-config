@@ -6,7 +6,8 @@
   swapSize,
   label,
   ...
-}: {
+}:
+{
   disko = {
     devices = {
       disk = {
@@ -40,7 +41,10 @@
                   passwordFile = "/tmp/secret.key";
                   settings = {
                     allowDiscards = true;
-                    crypttabExtraOpts = ["fido2-device=auto" "token-timeout=10"];
+                    crypttabExtraOpts = [
+                      "fido2-device=auto"
+                      "token-timeout=10"
+                    ];
                   };
                   content = {
                     type = "lvm_pv";
@@ -67,19 +71,35 @@
               size = "100%";
               content = {
                 type = "btrfs";
-                extraArgs = ["-L" label "-f"];
+                extraArgs = [
+                  "-L"
+                  label
+                  "-f"
+                ];
                 subvolumes = {
                   "@root" = {
                     mountpoint = "/";
-                    mountOptions = ["subvol=root" "compress=zstd" "noatime"];
+                    mountOptions = [
+                      "subvol=root"
+                      "compress=zstd"
+                      "noatime"
+                    ];
                   };
                   "@persist" = {
                     mountpoint = config.hostSpec.persist;
-                    mountOptions = ["subvol=persist" "compress=zstd" "noatime"];
+                    mountOptions = [
+                      "subvol=persist"
+                      "compress=zstd"
+                      "noatime"
+                    ];
                   };
                   "@nix" = {
                     mountpoint = "/nix";
-                    mountOptions = ["subvol=nix" "compress=zstd" "noatime"];
+                    mountOptions = [
+                      "subvol=nix"
+                      "compress=zstd"
+                      "noatime"
+                    ];
                   };
                 };
               };
