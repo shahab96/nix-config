@@ -23,7 +23,6 @@
     gh
     dbeaver-bin
     cloudflare-warp
-    protonmail-desktop
     rpi-imager
     kubectl
     k9s
