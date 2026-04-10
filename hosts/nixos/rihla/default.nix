@@ -52,6 +52,7 @@
       "hyprland"
       "nix-ld"
       "obs"
+      "postman"
       "secure-boot"
       "yubikey"
     ])
