@@ -53,6 +53,7 @@
       "nix-ld"
       "obs"
       "postman"
+      "rclone"
       "secure-boot"
       "yubikey"
     ])
