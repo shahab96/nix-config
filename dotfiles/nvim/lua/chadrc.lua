@@ -8,4 +8,11 @@ M.base46 = {
   theme = "catppuccin",
 }
 
+M.term = {
+  sizes = {
+    sp = 0.4,
+    vsp = 0.5,
+  },
+}
+
 return M
