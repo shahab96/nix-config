@@ -73,6 +73,7 @@
         pkgs.mkShell {
           buildInputs = with pkgs; [
             nil
+            nodejs
             lua-language-server
             kubernetes-helm
             kubectl
