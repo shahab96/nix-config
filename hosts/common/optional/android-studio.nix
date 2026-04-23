@@ -9,7 +9,7 @@ in
   environment = {
     systemPackages = with pkgs; [
       androidSdk
-      android-studio-full
+      android-studio
     ];
 
     variables = let

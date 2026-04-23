@@ -103,6 +103,8 @@
     enableIPv6 = false;
   };
 
+  nixpkgs.config.android_sdk.accept_license = true;
+
   boot = {
     loader = {
       # Set this to true on first install. This must be false for secure boot.
