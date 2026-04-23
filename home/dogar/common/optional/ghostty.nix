@@ -1,7 +1,7 @@
 { config, ... }:
 {
   programs.ghostty = {
-    enable = true;
+    enable = false;
 
     settings = {
       theme = "catppuccin-mocha";
