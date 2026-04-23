@@ -45,6 +45,7 @@
     #
     (map (c: lib.custom.relativeToRoot "hosts/common/optional/${c}.nix") [
       "1password"
+      "android-studio"
       "claude-code"
       "dconf"
       "docker"
