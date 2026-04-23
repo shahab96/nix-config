@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  hostSpec,
   ...
 }:
 {
@@ -9,6 +10,8 @@
     file = {
       "${config.xdg.configHome}/hypr/hyprland.conf".source =
         config.lib.file.mkOutOfStoreSymlink "${lib.custom.relativeToRoot "dotfiles/hypr/hyprland.conf"}";
+      "${config.xdg.configHome}/hypr/host.conf".source =
+        config.lib.file.mkOutOfStoreSymlink "${lib.custom.relativeToRoot "dotfiles/hypr/hosts/${hostSpec.hostName}.conf"}";
       "${config.xdg.configHome}/hypr/hypridle.conf".source =
         config.lib.file.mkOutOfStoreSymlink "${lib.custom.relativeToRoot "dotfiles/hypr/hypridle.conf"}";
       "${config.xdg.configHome}/hypr/hyprlock.conf".source =
