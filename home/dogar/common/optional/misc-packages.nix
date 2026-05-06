@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     awscli2
     btop
+    lm_sensors
     zoxide
     unzip
     tmux
