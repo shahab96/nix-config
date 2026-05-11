@@ -44,6 +44,7 @@
       "dconf"
       "docker"
       "hyprland"
+      "nodejs"
       "nix-ld"
       "thunderbird"
       "secure-boot"
