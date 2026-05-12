@@ -46,9 +46,10 @@
       "hyprland"
       "nodejs"
       "nix-ld"
-      "thunderbird"
+      "python"
       "secure-boot"
       "slack"
+      "thunderbird"
       "yubikey"
       "zoom"
     ])
