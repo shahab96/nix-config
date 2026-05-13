@@ -44,6 +44,7 @@
       "dconf"
       "docker"
       "hyprland"
+      "legion-fan"
       "nodejs"
       "nix-ld"
       "python"
@@ -88,6 +89,7 @@
   };
 
   boot = {
+    extraModulePackages = [ config.boot.kernelPackages.lenovo-legion-module ];
     loader = {
       # Set this to true on first install. This must be false for secure boot.
       systemd-boot = {

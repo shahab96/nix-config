@@ -25,7 +25,6 @@
     };
 
     kernelModules = [ "kvm-amd" ];
-    extraModulePackages = [ ];
     binfmt.emulatedSystems = [ "aarch64-linux" ]; # Add other target architectures as needed
   };
 
