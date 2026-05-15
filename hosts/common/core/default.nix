@@ -42,6 +42,16 @@
   # ========= Nix Settings =========
   #
   nix = {
+    # Pin `nixpkgs` (and the legacy <nixpkgs> path) to the same revision
+    # that built the running system, so commands like `nix run nixpkgs#hello`
+    # use the local store path instead of fetching a fresh tarball from GitHub.
+    registry.nixpkgs.flake = inputs.nixpkgs;
+    nixPath = [ "nixpkgs=flake:nixpkgs" ];
+
+    # Disable legacy nix-channel CLI and the auto-appended channels entry in
+    # NIX_PATH. Fully flake-based — nothing uses channels.
+    channel.enable = false;
+
     settings = {
       # See https://jackson.dev/post/nix-reasonable-defaults/
       connect-timeout = 5;
