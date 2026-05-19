@@ -48,6 +48,7 @@
       "nodejs"
       "nix-ld"
       "python"
+      "rust"
       "secure-boot"
       "slack"
       "thunderbird"
