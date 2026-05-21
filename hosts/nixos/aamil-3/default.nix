@@ -32,6 +32,7 @@ in
       "k3s"
       "openiscsi"
       "openssh"
+      "tx-checksum-off"
     ])
   ];
 
