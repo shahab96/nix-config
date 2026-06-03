@@ -1,6 +1,8 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
+    busybox
+    obs-studio
     awscli2
     btop
     lm_sensors
