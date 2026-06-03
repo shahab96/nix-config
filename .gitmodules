@@ -1,0 +1,3 @@
+[submodule "dotfiles/nvim"]
+	path = dotfiles/nvim
+	url = ssh://git@git.dogar.dev:2222/shahab/nvim.git
