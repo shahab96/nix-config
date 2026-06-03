@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     busybox
     obs-studio
+    kafkactl
     awscli2
     btop
     lm_sensors
