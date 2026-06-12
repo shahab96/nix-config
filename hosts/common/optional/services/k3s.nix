@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    k3s_1_35
+    k3s_1_36
     cifs-utils
     nfs-utils
   ];
