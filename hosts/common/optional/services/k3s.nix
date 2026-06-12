@@ -11,6 +11,6 @@
     role = "agent";
     # Add this before running
     token = "";
-    serverAddr = "https://rashid:6443";
+    serverAddr = "https://192.168.18.2:6443";
   };
 }
