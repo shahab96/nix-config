@@ -26,6 +26,13 @@ in
     (map lib.custom.relativeToRoot [ "hosts/common/core" ])
 
     #
+    # ========= Optional =========
+    #
+    (map (s: lib.custom.relativeToRoot "hosts/common/optional/${s}.nix") [
+      "nodejs"
+    ])
+
+    #
     # ========= Services =========
     #
     (map (s: lib.custom.relativeToRoot "hosts/common/optional/services/${s}.nix") [
